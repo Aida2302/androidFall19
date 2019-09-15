@@ -8,4 +8,10 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="NumberTextStyle">
+        <item name="android:textColor">#ffff</item>
+        <item name="android:layout_margin">4dp</item>
+
+    </style>
+
 </resources>

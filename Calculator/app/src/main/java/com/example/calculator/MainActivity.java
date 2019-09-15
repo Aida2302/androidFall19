@@ -26,15 +26,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button buttonMultiply;
     private Button buttonDivide;
 
+    private Button buttonPercent;
+    private Button buttonSquare;
+    private Button buttonSqrt;
+    private Button buttonDot;
+
     private Button buttonDelete;
     private Button buttonEqual;
 
-    private int number1;
-    private int number2;
-    private int result;
+    private double number1;
+    private double number2;
+    private double result;
 
     enum Sign {
-        PLUS, MINUS, MULTIPLY, DIVIDE
+        PLUS, MINUS, MULTIPLY, DIVIDE, SQUARE, SQRT, PERCENT
     }
     private Sign sign;
 
@@ -44,6 +49,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
         inputNumber = findViewById(R.id.numberInput);
+
         buttonNumber0 = findViewById(R.id.buttonNumber0);
         buttonNumber1 = findViewById(R.id.buttonNumber1);
         buttonNumber2 = findViewById(R.id.buttonNumber2);
@@ -59,6 +65,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         buttonMinus = findViewById(R.id.buttonMinus);
         buttonMultiply = findViewById(R.id.buttonMultiply);
         buttonDivide = findViewById(R.id.buttonDivide);
+
+        buttonPercent = findViewById(R.id.buttonPercent);
+        buttonSquare = findViewById(R.id.buttonSquare);
+        buttonSqrt = findViewById(R.id.buttonSqrt);
+        buttonDot = findViewById(R.id.buttonDot);
 
         buttonDelete = findViewById(R.id.buttonDelete);
         buttonEqual = findViewById(R.id.buttonEqual);
@@ -78,6 +89,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         buttonMinus.setOnClickListener(this);
         buttonMultiply.setOnClickListener(this);
         buttonDivide.setOnClickListener(this);
+
+        buttonPercent.setOnClickListener(this);
+        buttonSquare.setOnClickListener(this);
+        buttonSqrt.setOnClickListener(this);
+        buttonDot.setOnClickListener(this);
 
         buttonDelete.setOnClickListener(this);
         buttonEqual.setOnClickListener(this);
@@ -128,6 +144,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 inputNumber.append("9");
                 break;
             }
+            case R.id.buttonDot: {
+                inputNumber.append(".");
+                break;
+            }
             case R.id.buttonPlus: {
                 number1 = Integer.parseInt(inputNumber.getText().toString());
                 inputNumber.setText("");
@@ -167,6 +187,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     result = number1 / number2;
                 }
                 inputNumber.setText(String.valueOf(result));
+                break;
+            }
+            case R.id.buttonSquare: {
+                number1 = Integer.parseInt(inputNumber.getText().toString());
+                result = number1*number1;
+                inputNumber.setText(String.valueOf(result));
+                break;
+            }
+            case R.id.buttonSqrt: {
+                number1 = Double.parseDouble(inputNumber.getText().toString());
+                result = Math.sqrt(number1);
+                inputNumber.setText(String.valueOf(result));
+                break;
+            }
+            case R.id.buttonDelete: {
+                inputNumber.setText("0");
                 break;
             }
         }
