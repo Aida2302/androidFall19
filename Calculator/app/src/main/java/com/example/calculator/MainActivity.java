@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private double number1;
     private double number2;
     private double result;
+    private boolean check = true;
 
     enum Sign {
         PLUS, MINUS, MULTIPLY, DIVIDE, SQUARE, SQRT, PERCENT
@@ -103,6 +104,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
+
+//        if(inputNumber.getText().toString().equals("0")) {
+//            inputNumber.setText("");
+//        }
+
         switch (v.getId()) {
             case R.id.buttonNumber0: {
                 inputNumber.append("0");
@@ -184,7 +190,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     result = number1 * number2;
                 }
                 if(sign == Sign.DIVIDE) {
-                    result = number1 / number2;
+                    if(number2 == 0) {
+                        inputNumber.setText("Error");
+                        break;
+                    } else result = number1 / number2;
                 }
                 inputNumber.setText(String.valueOf(result));
                 break;
@@ -202,7 +211,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             }
             case R.id.buttonDelete: {
-                inputNumber.setText("0");
+                inputNumber.setText("");
                 break;
             }
         }
