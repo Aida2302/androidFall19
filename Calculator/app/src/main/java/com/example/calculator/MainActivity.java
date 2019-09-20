@@ -34,15 +34,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button buttonDelete;
     private Button buttonEqual;
 
-    private double number1;
-    private double number2;
+    private float number1;
+    private float number2;
     private double result;
-    private boolean check = true;
+    private boolean dot1 = false;
+    private String s1;
 
     enum Sign {
-        PLUS, MINUS, MULTIPLY, DIVIDE, SQUARE, SQRT, PERCENT
+        PLUS, MINUS, MULTIPLY, DIVIDE, NOTHING
     }
-    private Sign sign;
+    private Sign sign = Sign.NOTHING;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -105,10 +106,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
 
-//        if(inputNumber.getText().toString().equals("0")) {
-//            inputNumber.setText("");
-//        }
-
+        if(inputNumber.getText().toString().equals("Error") || inputNumber.getText().toString().equals("NaN") || inputNumber.getText().toString().equals("Infinity")) {
+            inputNumber.setText("");
+        }
         switch (v.getId()) {
             case R.id.buttonNumber0: {
                 inputNumber.append("0");
@@ -151,35 +151,93 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             }
             case R.id.buttonDot: {
-                inputNumber.append(".");
+                if(!dot1) {
+                    inputNumber.append(".");
+                    dot1 = true;
+                }
                 break;
             }
             case R.id.buttonPlus: {
-                number1 = Integer.parseInt(inputNumber.getText().toString());
+
+                if(inputNumber.getText().toString().equals("Error")) {
+                    s1 = "Error";
+                    break;
+                }
+                try {
+                    number1 = Float.parseFloat(inputNumber.getText().toString());
+                } catch (NumberFormatException | NullPointerException nfe) {
+                    number1 = 0;
+                }
                 inputNumber.setText("");
                 sign = Sign.PLUS;
                 break;
             }
             case R.id.buttonMinus: {
-                number1 = Integer.parseInt(inputNumber.getText().toString());
+
+                if(inputNumber.getText().toString().equals("Error")) {
+                    s1 = "Error";
+                    break;
+                }
+                try {
+                    number1 = Float.parseFloat(inputNumber.getText().toString());
+                } catch (NumberFormatException | NullPointerException nfe) {
+                    number1 = 0;
+                }
+//                number1 = Float.parseFloat(inputNumber.getText().toString());
                 inputNumber.setText("");
                 sign = Sign.MINUS;
                 break;
             }
             case R.id.buttonMultiply: {
-                number1 = Integer.parseInt(inputNumber.getText().toString());
+
+                if(inputNumber.getText().toString().equals("Error")) {
+                    s1 = "Error";
+                    break;
+                }
+                try {
+                    number1 = Float.parseFloat(inputNumber.getText().toString());
+                } catch (NumberFormatException | NullPointerException nfe) {
+                    number1 = 0;
+                }
+//                number1 = Float.parseFloat(inputNumber.getText().toString());
                 inputNumber.setText("");
                 sign = Sign.MULTIPLY;
                 break;
             }
             case R.id.buttonDivide: {
-                number1 = Integer.parseInt(inputNumber.getText().toString());
+
+                if(inputNumber.getText().toString().equals("Error")) {
+                    s1 = "Error";
+                    break;
+                }
+                try {
+                    number1 = Float.parseFloat(inputNumber.getText().toString());
+                } catch (NumberFormatException | NullPointerException nfe) {
+                    number1 = 0;
+                }
+//                number1 = Float.parseFloat(inputNumber.getText().toString());
                 inputNumber.setText("");
                 sign = Sign.DIVIDE;
                 break;
             }
             case R.id.buttonEqual: {
-                number2 = Integer.parseInt(inputNumber.getText().toString());
+                if(sign == Sign.NOTHING) {
+//                    inputNumber.setText(String.valueOf(result));
+                    dot1 = false;
+                    break;
+                }
+//                if(s1.equals("Error")) {
+//                    inputNumber.setText(String.valueOf("Error"));
+//                    dot1 = false;
+//                    break;
+//                }
+
+                try {
+                    number2 = Float.parseFloat(inputNumber.getText().toString());
+                } catch (NumberFormatException | NullPointerException nfe) {
+                    number2 = number1;
+                }
+//                number2 = Float.parseFloat(inputNumber.getText().toString());
                 if(sign == Sign.PLUS) {
                     result = number1 + number2;
                 }
@@ -195,23 +253,58 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         break;
                     } else result = number1 / number2;
                 }
+
                 inputNumber.setText(String.valueOf(result));
+                dot1 = false;
                 break;
             }
             case R.id.buttonSquare: {
-                number1 = Integer.parseInt(inputNumber.getText().toString());
+                try {
+                    number1 = Float.parseFloat(inputNumber.getText().toString());
+                } catch (NumberFormatException | NullPointerException nfe) {
+                    number1 = 0;
+                }
+//                number1 = Float.parseFloat(inputNumber.getText().toString());
                 result = number1*number1;
                 inputNumber.setText(String.valueOf(result));
                 break;
             }
             case R.id.buttonSqrt: {
-                number1 = Double.parseDouble(inputNumber.getText().toString());
+                try {
+                    number1 = Float.parseFloat(inputNumber.getText().toString());
+                } catch (NumberFormatException | NullPointerException nfe) {
+                    number1 = 0;
+                }
+//                number1 = Float.parseFloat(inputNumber.getText().toString());
                 result = Math.sqrt(number1);
                 inputNumber.setText(String.valueOf(result));
                 break;
             }
+            case R.id.buttonPercent: {
+//                try {
+//                    number1 = Float.parseFloat(inputNumber.getText().toString());
+//                } catch (NumberFormatException | NullPointerException nfe) {
+//                    number1 = 0;
+//                }
+//                result = number1/100;
+//                inputNumber.setText(String.valueOf(result));
+//                break;
+                if(inputNumber.getText().toString().equals("Error") || inputNumber.getText().toString().equals("NaN")) {
+                    inputNumber.setText("");
+                    dot1 = false;
+                    break;
+                }
+                String str = inputNumber.getText().toString();
+                if ((str != null) && (str.length() > 0)) {
+                    str = str.substring(0, str.length() - 1);
+                }
+                inputNumber.setText(str);
+                if(!str.contains(".")) dot1 = false;
+                break;
+            }
             case R.id.buttonDelete: {
                 inputNumber.setText("");
+                dot1 = false;
                 break;
             }
         }
