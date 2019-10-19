@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1077525488132",
+    "firebase_url": "https://fashion-14f8c.firebaseio.com",
+    "project_id": "fashion-14f8c",
+    "storage_bucket": "fashion-14f8c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1077525488132:android:bfcbf8ce2bbc85f2e98b51",
+        "android_client_info": {
+          "package_name": "com.example.fashiony"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1077525488132-skuljrh18pmm0mghbmb36d7th6thg2m4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.fashiony",
+            "certificate_hash": "0db61d0fdfd03c432c4c1aa5f31ac51cb37bf8cf"
+          }
+        },
+        {
+          "client_id": "1077525488132-og2ps1pcfu684gccn3vmt0drs03afb4i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCyKyAfLvsaZM8Q9Bx0qa8iZOFL8DnUnP4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1077525488132-og2ps1pcfu684gccn3vmt0drs03afb4i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
