@@ -1,14 +1,17 @@
-package com.example.fashiony;
+package com.example.fashiony.Admin;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+
+import com.example.fashiony.HomeActivity;
+import com.example.fashiony.MainActivity;
+import com.example.fashiony.R;
 
 public class AdminCategoryActivity extends AppCompatActivity
 {

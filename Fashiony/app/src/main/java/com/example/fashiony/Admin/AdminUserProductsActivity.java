@@ -1,4 +1,4 @@
-package com.example.fashiony;
+package com.example.fashiony.Admin;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.fashiony.Model.Cart;
+import com.example.fashiony.R;
 import com.example.fashiony.ViewHolder.CartViewHolder;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
