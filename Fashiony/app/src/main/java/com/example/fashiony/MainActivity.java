@@ -88,9 +88,7 @@ public class MainActivity extends AppCompatActivity
 
     private void AllowAccess(final String phone, final String password)
     {
-        final DatabaseReference RootRef;
-        RootRef = FirebaseDatabase.getInstance().getReference();
-
+        final DatabaseReference RootRef = FirebaseDatabase.getInstance().getReference();
 
         RootRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
