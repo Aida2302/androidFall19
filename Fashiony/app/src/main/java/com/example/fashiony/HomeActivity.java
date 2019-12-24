@@ -232,6 +232,13 @@ public class HomeActivity extends AppCompatActivity
             }
 
         }
+        else if (id == R.id.nav_network)
+        {
+            if(!type.equals("Admin")) {
+                Intent intent = new Intent(HomeActivity.this, NetworkActivity.class);
+                startActivity(intent);
+            }
+        }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
